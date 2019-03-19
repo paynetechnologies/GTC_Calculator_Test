@@ -9,7 +9,7 @@ using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace SeleniumBingTests
+namespace Automation_Test
 {
     public static class WebDriverExtensions
     {
@@ -27,7 +27,7 @@ namespace SeleniumBingTests
     /// Summary description for MySeleniumTests
     /// </summary>
     [TestClass]
-    public class MySeleniumTests
+    public class UnitTest_GTC_Calculator
     {
         /// <summary>
         /// Used to store information that is provided to unit tests.
@@ -40,7 +40,7 @@ namespace SeleniumBingTests
 
         private string appURL;
 
-        public MySeleniumTests()
+        public UnitTest_GTC_Calculator()
         {
         }
 
@@ -108,7 +108,7 @@ namespace SeleniumBingTests
         }
 
         [TestMethod]
-        public void testFindElements()
+        public void Test_FindElements()
         {
             //Get all the links displayed on Page
             ReadOnlyCollection<IWebElement> links = driver.FindElements(By.TagName("a"));
@@ -125,7 +125,7 @@ namespace SeleniumBingTests
 
 
         [TestCleanup()]
-        public void MyTestCleanup()
+        public void Test_Cleanup()
         {
             driver.Quit();
         }

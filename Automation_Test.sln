@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTC_Calculator_Test", "GTC_Calculator_Test\GTC_Calculator_Test.csproj", "{51469451-6F00-4C8E-A08E-11BC591827DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation_Test", "GTC_Calculator_Test\Automation_Test.csproj", "{51469451-6F00-4C8E-A08E-11BC591827DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
