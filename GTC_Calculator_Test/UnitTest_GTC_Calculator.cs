@@ -27,6 +27,7 @@ namespace Automation_Test
     /// Summary description for MySeleniumTests
     /// </summary>
     [TestClass]
+    [Ignore]
     public class UnitTest_GTC_Calculator
     {
         /// <summary>
@@ -69,6 +70,7 @@ namespace Automation_Test
         }
 
         [TestMethod]
+        [Ignore]
         [TestCategory("Chrome")]
         public void Test_Calculator()
         {
@@ -108,6 +110,7 @@ namespace Automation_Test
         }
 
         [TestMethod]
+        [Ignore]
         public void Test_FindElements()
         {
             //Get all the links displayed on Page

@@ -8,20 +8,24 @@ using OpenQA.Selenium.IE;
 
 namespace Automation_Test
 {
+
+
     /// <summary>
     /// Summary description for UnitTest_Bing
     /// </summary>
     [TestClass]
     public class UnitTest_Bing
     {
+        private TestContext testContextInstance;
+        private IWebDriver driver;
+        private string appURL;
+
         public UnitTest_Bing()
         {
             //
             // TODO: Add constructor logic here
             //
         }
-
-        private TestContext testContextInstance;
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -62,11 +66,48 @@ namespace Automation_Test
         #endregion
 
         [TestMethod]
-        public void Test_Method()
+        [TestCategory("Chrome")]
+        public void TheBingSearchTest2()
         {
-            //
-            // TODO: Add test logic here
-            //
+            driver.Navigate().GoToUrl(appURL + "/");
+            driver.FindElement(By.Id("sb_form_q")).SendKeys("Azure Pipelines");
+            driver.FindElement(By.Id("sb_form_go")).Click();
+            driver.FindElement(By.XPath("//*[@id='b_results']/li[1]/h2/a")).Click();
+            Assert.IsTrue(driver.Title.Contains("Azure Pipelines | Microsoft Azure"), "Verified title of the page");
         }
+
+
+        [TestInitialize()]
+        public void SetupTest()
+        {
+            appURL = "http://www.bing.com/";
+
+            string browser = "Chrome";
+            switch (browser)
+            {
+                case "Chrome":
+                    driver = new ChromeDriver();
+                    break;
+                case "Firefox":
+                    driver = new FirefoxDriver();
+                    break;
+                case "IE":
+                    driver = new InternetExplorerDriver();
+                    break;
+                default:
+                    driver = new ChromeDriver();
+                    break;
+            }
+
+        }
+
+        [TestCleanup()]
+        public void MyTestCleanup()
+        {
+            driver.Close();
+            driver.Quit();
+        }
+
+
     }
 }

@@ -56,9 +56,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Raygun.cs" />
     <Compile Include="UnitTest_GTC_Calculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest_Bing.cs" />
+    <Compile Include="UnitTest_Raygun.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
