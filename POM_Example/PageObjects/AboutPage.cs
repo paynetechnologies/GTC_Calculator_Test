@@ -27,8 +27,9 @@ namespace POMExample.PageObjects
 
         public ResultPage Search(string text)
         {
-            this.searchText = this.driver.FindElement(By.XPath("//*[@id='menu - main']/li[8]/div/form/div/div[1]/label/input"));
-            this.searchText.SendKeys(text);
+            searchText = driver.FindElement(By.XPath("//input[@name='s']"));
+            searchText = driver.FindElement(By.Name("s"));
+            searchText.SendKeys(text);
             //wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.CssSelector("fusion-search-submit searchsubmit"))).Click();
             wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.CssSelector("#sidebar .searchsubmit"))).Click();
             return new ResultPage(driver);
