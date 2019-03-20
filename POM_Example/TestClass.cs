@@ -25,8 +25,10 @@ namespace POMExample
         {
             HomePage home = new HomePage(driver);
             home.goToPage();
+
             AboutPage about = home.GoToAboutPage();
             ResultPage result = about.Search("selenium c#");
+
             result.clickOnFirstArticle();
         }
 
