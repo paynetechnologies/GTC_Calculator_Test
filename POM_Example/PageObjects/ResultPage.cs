@@ -12,9 +12,8 @@ namespace POMExample.PageObjects
     {
         private IWebDriver driver;
 
-        [FindsBy(How = How.CssSelector, Using = "#posts-container>article:nth-child(1)")]
+        //[FindsBy(How = How.CssSelector, Using = "#posts-container>article:nth-child(1)")]
         private IWebElement firstArticle;
-        //this.firstArticle = driver.FindElement(By.CssSelector("#posts-container>article:nth-child(1)"));
 
         public ResultPage(IWebDriver driver)
         {
@@ -24,6 +23,7 @@ namespace POMExample.PageObjects
 
         public void clickOnFirstArticle()
         {
+            this.firstArticle = driver.FindElement(By.CssSelector(".fusion-posts-container>article:nth-child(1)"));
             this.firstArticle.Click();
         }
     }

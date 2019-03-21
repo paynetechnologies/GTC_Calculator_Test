@@ -1,26 +1,45 @@
-﻿//using NUnit.Framework;
+﻿#define NUnit_OFF
+
+#if NUnit
+using NUnit.Framework;
+#else
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+# endif
+
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using POMExample.PageObjects;
 
+
 namespace POMExample
 {
+
+#if NUnit
+    [TestFixture]
+#else
     [TestClass]
+#endif
     public class TestClass
     {
         private IWebDriver driver;
 
-        //NUnit [SetUp]
+#if NUnit
+        [SetUp]
+#else
         [TestInitialize()]
+#endif
         public void SetUp()
         {
             driver = new ChromeDriver();
+            // Need to Maximize window in order for About button to be visible
             driver.Manage().Window.Maximize();
         }
 
-        // NUint [Test]
+#if NUnit
+        [Test]
+#else
         [TestMethod]
+#endif
         public void SearchTextFromAboutPage()
         {
             HomePage home = new HomePage(driver);
@@ -32,17 +51,26 @@ namespace POMExample
             result.clickOnFirstArticle();
         }
 
-        // NUnit [TearDown]
-        //public void TearDown()
-        //{
-        //    driver.Close();
-        //}
 
+
+#if NUnit
+        [TearDown]
+        public void TearDown()
+        {
+            if (this.driver != null)
+            {
+                driver.Quit();
+            }
+        }
+#else
         [TestCleanup()]
         public void Test_Cleanup()
         {
-            driver.Quit();
-            driver.Dispose();
+            if (this.driver != null)
+            {
+                driver.Quit();
+            }
         }
+#endif
     }
 }

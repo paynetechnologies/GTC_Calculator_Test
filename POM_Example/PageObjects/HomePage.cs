@@ -12,13 +12,9 @@ namespace POMExample.PageObjects
 
         [FindsBy(How = How.CssSelector, Using = ".fusion-main-menu a[href*='about']")]
         private IWebElement about;
-        //var cs = driver.FindElement(By.CssSelector(".fusion-main-menu a[href*='about']"));
-        //this.about = driver.FindElement(By.CssSelector(".fusion-main-menu a[href*='about']"));
 
         [FindsBy(How = How.ClassName, Using = "fusion-main-menu-icon")]
         private IWebElement searchIcon;
-        //var cn = driver.FindElement(By.ClassName("fusion-main-menu-icon"));
-        //this.searchIcon = driver.FindElement(By.ClassName("fusion-main-menu-icon"));
 
         public HomePage(IWebDriver driver)
         {
@@ -33,8 +29,16 @@ namespace POMExample.PageObjects
 
         public AboutPage GoToAboutPage()
         {
-            this.about.Click();
-            return new AboutPage(driver);
+            try
+            {
+                //this.about = driver.FindElement(By.CssSelector(".fusion-main-menu a[href*='about']"));
+                this.about.Click();
+                return new AboutPage(driver);
+            }
+            catch
+            {
+                throw;
+            }
         }
     } 
 }

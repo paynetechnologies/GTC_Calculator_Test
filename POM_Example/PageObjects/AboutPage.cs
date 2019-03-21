@@ -12,11 +12,11 @@ namespace POMExample.PageObjects
         private IWebDriver driver;
         private WebDriverWait wait;
 
-        //[FindsBy(How = How.CssSelector, Using = "#sidebar input[class='s']")]
-        //[FindsBy(How = How.XPath,       Using = "//*[@id='menu - main']/li[8]/div/form/div/div[1]/label/input")]
-        
+        //[FindsBy(How = How.XPath, Using = "//input[@name='s']")]
         private IWebElement searchText;
-        
+
+        private IWebElement searchMagnifier;
+
 
         public AboutPage(IWebDriver driver)
         {
@@ -27,11 +27,13 @@ namespace POMExample.PageObjects
 
         public ResultPage Search(string text)
         {
+            searchMagnifier = driver.FindElement(By.CssSelector(".fusion-main-menu-icon"));
+            searchMagnifier.Click();
+
             searchText = driver.FindElement(By.XPath("//input[@name='s']"));
-            searchText = driver.FindElement(By.Name("s"));
             searchText.SendKeys(text);
-            //wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.CssSelector("fusion-search-submit searchsubmit"))).Click();
-            wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.CssSelector("#sidebar .searchsubmit"))).Click();
+            wait.Until(condition: ExpectedConditions.ElementToBeClickable(By.CssSelector(".fusion-search-submit"))).Click();
+
             return new ResultPage(driver);
         }
     }
