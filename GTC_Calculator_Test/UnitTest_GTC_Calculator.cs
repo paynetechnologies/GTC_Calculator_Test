@@ -1,12 +1,10 @@
-﻿using System;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
-using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 
 namespace Automation_Test
@@ -128,9 +126,12 @@ namespace Automation_Test
 
 
         [TestCleanup()]
-        public void Test_Cleanup()
+        public void MyTestCleanup()
         {
-            driver.Quit();
+            if (driver != null)
+            {
+                driver.Quit();
+            }
         }
     }
 }

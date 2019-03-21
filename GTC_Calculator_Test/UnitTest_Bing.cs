@@ -1,14 +1,11 @@
-﻿using System;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 
 namespace Automation_Test
 {
-
 
     /// <summary>
     /// Summary description for UnitTest_Bing
@@ -104,10 +101,10 @@ namespace Automation_Test
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            driver.Close();
-            driver.Quit();
+            if (driver != null)
+            {
+                driver.Quit();
+            }
         }
-
-
     }
 }
